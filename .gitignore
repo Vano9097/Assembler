@@ -1,0 +1,9 @@
+*.exe
+*.obj
+*.lib
+*.inc
+*.cmd
+*.dll
+*.id*
+*.nam
+*.til

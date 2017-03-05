@@ -5,23 +5,31 @@ INCLUDE stdlib.inc
 INCLUDELIB msvcrt.lib
 
 .DATA
-  a dd 12
-  b dd 8  
+  x2 dd 1
+  y2 dd 1
+  x1 dd 2
+  y1 dd 3
   rez dd ?
 .CODE
 main:
-  mov eax, a
-  mov ebx, b
-gcd:
-  cmp eax,ebx ; сравниваем числа
-  jz  stop    ; если они равны, то заканчиваем поиск, переходим на метку stop
-  jl  less    ; если eax < ebx, переходим на метку less
-  sub eax,ebx ; eax = eax - ebx
-  jmp gcd     ; продолжаем поиск
-less:
-  sub ebx,eax ; ebx = ebx - eax
-  jmp gcd     ; продолжаем поиск
-stop:
+  mov eax, x2
+  mov ebx, y2
+  sub eax, x1
+  sub ebx, y1
+  imul ebx
   mov rez, eax
+  ; add xxx yyy - xxx <- xxx+yyy
+  ; sub xxx yyy - xxx <- xxx-yyy
+  ; mul - беззнаковое умножение
+  ; imul - знаковое умножение
+  ; div - беззнаковое деление
+  ; idiv - знаковое деление
   call exit
 END main
+	  
+
+
+
+
+
+

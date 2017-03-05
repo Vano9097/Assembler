@@ -5,19 +5,26 @@ INCLUDE stdlib.inc
 INCLUDELIB msvcrt.lib
 
 .DATA
-  a dd 10
-  b dd 8 
-  varC dd 10
-  d dd 4
-  rez dd ?
+  av dd 1
+  bv dd 2
+  cv dd ?
 .CODE
 main:
-  mov eax, varC
-  cdq
-  div d
-  mov rez, edx
-  mov eax,a
-  mul b
-  sub eax, rez
-  mov rez, eax
+  mov eax, av
+  add eax, bv
+  mov cv, eax
+  ; add xxx yyy - xxx <- xxx+yyy
+  ; sub xxx yyy - xxx <- xxx-yyy
+  ; mul - беззнаковое умножение
+  ; imul - знаковое умножение
+  ; div - беззнаковое деление
+  ; idiv - знаковое деление
+  call exit
 END main
+	  
+
+
+
+
+
+
