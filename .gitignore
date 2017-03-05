@@ -4,3 +4,6 @@
 *.inc
 *.cmd
 *.dll
+*.id*
+*.nam
+*.til
