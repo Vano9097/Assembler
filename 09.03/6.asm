@@ -4,19 +4,19 @@ INCLUDE stdlib.inc
 INCLUDELIB msvcrt.lib
 
 .DATA
-  n db 16   ; количество чисел  > 0 !!!!
+  n db 1   ; количество чисел  > 0 !!!!
   fib dd ?  ; для результата
   
-; Записать в sum сумму первых n нечетных
-; натуральных чисел
+
 .CODE
 main:
-  mov eax, 0   ; текущее значение суммы
-  mov ebx, 1   ; текущее слагаемое
+  mov eax, 0   
+  mov ebx, 1   
   mov edx, 0
   
   mov ecx, 0
   mov cl, n    ; счетчик
+  inc cl
 
 start_loop:  
   mov edx, eax
