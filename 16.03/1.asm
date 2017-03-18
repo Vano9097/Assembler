@@ -4,26 +4,16 @@ INCLUDE stdlib.inc
 INCLUDELIB msvcrt.lib
 
 .DATA
-  a dd 19   ; количество чисел  > 0 !!!!
-  mas dd 1  ; для результата
-  n db 3
+  a dd 19    
+  n db 1
 .CODE
 main:
+  
   mov eax, a
-  mov ebx, mas
-  not ebx
-  
-  
-  
-start_loop:
-  cmp n, 0
-  jz ex
-  dec n
+  mov ebx, 11111111111111111111111111111111b
+  mov cl, n
+  shl ebx, cl
   and eax, ebx
-  shl ebx, 1
-  jmp start_loop
-   
-ex:
   mov a, eax
   
   call exit

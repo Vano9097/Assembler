@@ -4,7 +4,7 @@ INCLUDE stdlib.inc
 INCLUDELIB msvcrt.lib
 
 .DATA
-  a dd -140
+  a dd -280
   s db ?
 .CODE
 main:
@@ -19,11 +19,10 @@ main:
 start:
   cmp eax, 0
   jz ex
-  cdq
+  xor edx, edx
   div ebx
   add cl, dl
   jmp start 
-  
 ex:
   mov s, cl
   call exit

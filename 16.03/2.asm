@@ -4,58 +4,34 @@ INCLUDE stdlib.inc
 INCLUDELIB msvcrt.lib
 
 .DATA
-  a db 6   ; количество чисел  > 0 !!!!
-  mas1 db 2  ; для результата
-  mas2 db 1
-  n db 8
+  a db 7 
+  n db 4
 .CODE
 main:
-  mov cl, 8
-start_loop:
+mov cl, n
+; mov al,0
+; mov ah,0
 
-
-  cmp cl, 0
-  jz ex
-  sub cl, 2
-  mov al, mas1
-  mov bl, mas2
-  shl al, cl
-  shl bl, cl
+; start_loop:
+  ; cmp n, 0
+  ; je next
+  ; dec n
+  ; shl al, 2
+  ; or al, 1
+  ; shl ah, 2
+  ; or ah, 2
+  ; jmp start_loop
+; next: 
+  mov al, 01010101b
+  mov ah, 10101010b
   and al, a
-  and bl, a
-  shl bl, 1
-  shr al, 1
-  cmp al, 0
-  je Not_Al
-  or a, al
-Next:  
-  cmp bl, 0
-  je Not_Bl 
-  or a, bl
-  jmp start_loop
-  
-Not_Al:
-  mov al, mas1
-  shl al, cl
-  shr al, 1
-  not al
-  and a, al
-  jmp Next
-  
-Not_Bl:
-  mov bl, mas2
-  shl bl, cl
-  shl bl, 1
-  not bl
-  and a, bl
-  jmp start_loop
-  
-  
-  
-  
-  
+  and ah, a
+  shr ah, 1
+  shl al, 1
+  or al, ah
+  mov a, al  
    
-ex:
+; ex:
   
   call exit
 END main
