@@ -13,20 +13,15 @@ main:
   mov esi, offset ar1  
   mov edi, offset ar2
   
-  
-  
   mov eax, len
   dec eax
   mov ebx, type ar2
   mul ebx
   add edi, eax
-  
-  
-  
+
 start:
   dec ecx
   jl stop
-  
   
   mov eax, [esi] 
   mov [edi], eax

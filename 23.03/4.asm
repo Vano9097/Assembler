@@ -4,8 +4,8 @@ INCLUDE stdlib.inc
 INCLUDELIB msvcrt.lib
 
 .DATA
-  len equ 6
-  ar1 dw 1200, -1804, 1805, 1912, -1915, 2000
+  len equ 3
+  ar1 dw -11, 11, 222
   ar2 db len dup(?)
  .CODE
 main:   
@@ -15,15 +15,16 @@ main:
 start:
   dec ecx
   jl stop
-  
-  mov dx,0
-  mov ax, [esi] 
-  mov bx, 10
-  
-  cmp ax,0
+
+  mov ax, [esi]
+  cmp ax, 0
   jg ok
   neg ax
+  
 ok:
+  
+  xor dx, dx 
+  mov bx, 10
   
   div bx    
   mov [edi],dx
@@ -33,6 +34,5 @@ ok:
   jmp start
     
 stop:
-
   call exit
 END main

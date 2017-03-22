@@ -4,8 +4,8 @@ INCLUDE stdlib.inc
 INCLUDELIB msvcrt.lib
 
 .DATA
-  len equ 6
-  years dw 1200, 1804, 1805, 1912, 1915, 2000
+  len equ 4
+  years dw 2000, 1900, 2004, 1999 
   leaps db len dup(?)
  .CODE
 main:   
@@ -16,45 +16,43 @@ start:
   dec ecx
   jl stop
   
-  mov dx,0
-  mov eax, [esi] 
+  xor dx, dx
+  mov ax, [esi] 
   mov bx, 4
   div bx    
   cmp dx, 0 
-  jz ok
+  jz mod4
   
-vtor:  
-  mov dx,0
-  mov eax, [esi] 
+mod400?:  
+  xor dx, dx
+  mov ax, [esi] 
   mov bx, 400
   div bx    
   cmp dx, 0 
-  jz ex
+  jz yes
   
   mov bl,0
   mov [edi],bl
   add esi, type years
   add edi, type leaps
   jmp start
-ex:
+
+yes:
   mov bl,1
   mov [edi],bl  
   add esi, type years
   add edi, type leaps
   jmp start
-ok:
-  mov dx,0
-  mov eax, [esi] 
+
+mod4:
+  xor dx, dx
+  mov ax, [esi] 
   mov bx, 100
   div bx 
   cmp dx, 0 
-  ; jnz okk
-  jnz ex
-  jmp vtor
-; okk: 
-  ; jmp ex 
-    
-stop:
+  jnz yes
+  jmp mod400?
 
+stop:
   call exit
 END main
