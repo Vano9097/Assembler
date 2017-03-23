@@ -14,12 +14,13 @@ main:
   mov ecx, len
   mov esi, offset ar1  
   mov edi, offset ar2
+  mov ebx, k
 start:
   dec ecx
   jl stop
  
   mov eax, [esi] 
-  mov ebx, k
+  
 
   cdq
   idiv ebx    

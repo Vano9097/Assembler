@@ -27,7 +27,7 @@ ok:
   mov bx, 10
   
   div bx    
-  mov [edi],dx
+  mov [edi],dl
   
   add esi, type ar1
   add edi, type ar2

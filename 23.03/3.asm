@@ -33,16 +33,13 @@ mod400?:
   
   mov bl,0
   mov [edi],bl
-  add esi, type years
-  add edi, type leaps
-  jmp start
+  jmp next
 
 yes:
   mov bl,1
   mov [edi],bl  
-  add esi, type years
-  add edi, type leaps
-  jmp start
+  jmp next
+
 
 mod4:
   xor dx, dx
@@ -53,6 +50,11 @@ mod4:
   jnz yes
   jmp mod400?
 
+next:
+  add esi, type years
+  add edi, type leaps
+  jmp start
+  
 stop:
   call exit
 END main

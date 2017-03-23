@@ -5,7 +5,7 @@ INCLUDELIB msvcrt.lib
 
 .DATA
   LEN_AR EQU 12
-  facts dd LEN_AR dup(?)
+  facts dd (LEN_AR+1) dup(?)
 
   
   ; произведение в edx
@@ -21,7 +21,6 @@ main:
 start:  
   dec ecx
   jl stop
-  mov eax, [esi]
   
   mul ebx
   add esi, TYPE facts
