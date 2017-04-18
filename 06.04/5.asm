@@ -4,11 +4,8 @@ INCLUDE stdlib.inc
 INCLUDELIB msvcrt.lib
 
 .DATA
-  LENA EQU 3
-  a dd 1,1,1
-  LENX EQU 3
-  xs dd 0,2,1
-  res dd ?
+  LENA EQU 4
+  a dw 1,2,1,1
 .CODE
 main:
   mov esi, offset a
@@ -44,8 +41,8 @@ stop:
   call exit
   
 gorner:
-  ; edi - адрес x
-  ; esi - коэфиценты 32бит знак
+  ; edi - x
+  ; esi - коэфиценты
   ; eax - длина
   push edx
   push eax
@@ -56,7 +53,7 @@ gorner_start:
   
   imul dword ptr [edi]
   add eax, [esi]
-  add esi, 4
+  add esi, type a
   dec dword ptr [esp]
   
   jmp gorner_start

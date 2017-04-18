@@ -16,19 +16,8 @@ main:
   
   call exit
   
-  
-  
-
-;----------------------------------
-; НОД двух чисел
-; Входные данные:
-;   eax - первое число
-;   ebx - второе число
-; Выходные данные:
-;   eax - результат 
-  
 NOD:
-
+  push ecx
   push edx
   push ebx
   ; push eax
@@ -37,15 +26,16 @@ NOD:
 gcd:
   cmp ebx, 0
   jz stop 
+  mov ecx, ebx
   cdq
   div ebx 
-  mov eax, ebx
   mov ebx, edx
+  mov eax, ecx
   jmp gcd  
 stop:
   pop ebx
   pop edx
-
+  pop ecx
   
  ; ответ eax
  ret
@@ -54,7 +44,8 @@ stop:
 re:
    cmp ebx, 0
    jge re_exit
-   neg ebx
+   not ebx
+   inc ebx
 re_exit:
   ret
   
@@ -67,7 +58,8 @@ compute_array:
   
   cmp eax, 0
   jge start
-  neg eax
+  not eax
+  inc eax
   
 
 start:
@@ -80,7 +72,6 @@ start:
   add esi, 4
   jmp start
 compute_array_exit:
-  add esp, 4
   ret
 
   

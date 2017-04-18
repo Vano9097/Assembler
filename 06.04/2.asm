@@ -19,7 +19,6 @@ main:
 power:
   ; eax - число
   ; bl - степень
-  push ebx
   push edx
   push eax
   mov eax, 1
@@ -27,12 +26,11 @@ power_start:
   cmp bl, 0
   je power_stop
   dec bl
-  mul dword ptr [esp]
+  imul dword ptr [esp]
   jmp power_start
 power_stop:
   add esp, 4
   pop edx
-  pop ebx
   ; eax  ответ
   ret
   
