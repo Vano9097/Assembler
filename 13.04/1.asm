@@ -5,16 +5,16 @@ INCLUDELIB msvcrt.lib
 
 .DATA
   LEN1 EQU 4
-  v1 dw 1, 2, 3, 4
+  v1 dw 1,4,8,9
   
   LEN2 EQU 7
-  v2 dw 10, 20, 30, 40, 50, 60, 70 
+  v2 dw 1, 2, 3, 4, 5, 6, 7 
 
   LEN3 EQU 10
   v3 dd LEN3 dup(?)
 
-  a1 dw 2
-  a2 dw -1
+  a1 dw 200
+  a2 dw -100
   
 .CODE
 main:
@@ -54,10 +54,8 @@ compute_array:
   push ebp
   mov ebp, esp
   
-; спасаю регистры
   pusha
-  
-; Вычисляю длину обрабатываемой части векторов
+
   mov ecx, [ebp+8]   ; len(v1) 
   cmp ecx, [ebp+16]  ; len(v2)
   jbe skip_lenb
@@ -74,33 +72,27 @@ skip_lenc:
   mov edi, [ebp+20]  ; addr v2
   mov ebx, [ebp+28]  ; addr v3
   
-; цикл обработки
+
 start:
   dec ecx
   jl stop  
   
-; вычисляю a1*v1i
   xor eax, eax
   mov ax, [esi+2*ecx]
   imul word ptr [ebp+32]
   shl edx, 16
   add eax, edx
-  push eax ; спасаю в стеке
+  push eax 
   
-; вычисляю a2*v2i  
   xor eax,eax
   mov ax, [edi+2*ecx]
   imul word ptr [ebp+36]
   shl edx, 16
   add eax,edx
-  pop edx ; восстанавливаю a1*v1i из стека
+  pop edx 
   
-; нахожу сумму  
   add eax, edx
-; записываю в массив v3  
   mov [ebx+4*ecx], eax
-  
-; конец цикла, перехожу на начало  
   jmp start
   
 stop:  
