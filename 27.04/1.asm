@@ -9,11 +9,11 @@ INCLUDE stdio.inc
 INCLUDELIB msvcrt.lib
 
 .DATA
-  a dq 15.0
-  b dq -7.5
+  a dq ?
+  b dq ?
   e dq ? ; a/b + d
   
-  in_format db "%lf %lf", 0
+  in_format db "%lf%lf", 0
   
   in_mess db "ax+b=0; a b : ", 0
   str_ret db 13, 10, 0

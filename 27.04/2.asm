@@ -9,12 +9,12 @@ INCLUDE stdio.inc
 INCLUDELIB msvcrt.lib
 
 .DATA
-  a dq 15.0
-  b dq -7.5
-  ma dq ? ; a/b + d
+  a dq ?
+  b dq ?
+  ma dq ? 
   mi dq ?
   
-  in_format db "%lf %lf", 0
+  in_format db "%lf%lf", 0
   
   in_mess db "a b : ", 0
   str_ret db 13, 10, 0
@@ -70,7 +70,7 @@ main:
   
   push offset out_format
   call printf
-  add esp, 12
+  add esp, 20
   
   call exit  
    
